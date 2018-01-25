@@ -9,11 +9,12 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput
 } from 'react-native';
-import RateList from './src/components/RateList'
-import { Provider } from 'react-redux'
-import store from './src/store'
+
+import Header from './src/components/header'
+import ItemList from './src/components/ItemList'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -23,35 +24,24 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
   render() {
+    const { viewStyle } = styles
     return (
-      <Provider store={store}>
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          HALAMAN LIST
-        </Text>
-        <RateList/>
+      <View style={viewStyle}>
+        <Header/>
+        <ItemList/>
       </View>
-      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const styles = {
+  viewStyle: {
+    flex: 1
+  }
+}
